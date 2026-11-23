@@ -1,0 +1,10 @@
+#Ingestion 
+paths:
+  root: /Workspace/Users/ashishchauhan3301@gmail.com/RAG/
+  pdf_dir: data/pdf_files
+  vector_store: data/vector_store 
+
+chunking:
+  chunk_size: 1000
+  chunk_overlap: 200
+
