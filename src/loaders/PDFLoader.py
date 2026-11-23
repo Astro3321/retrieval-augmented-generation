@@ -1,15 +1,13 @@
 import os
-from langchain_community.document_loaders import PyPDFLoader, PyMuPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pathlib import Path
-from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader, PyMuPDFLoader, DirectoryLoader
 
 class PDFLoader:
-    def __init__(self, pdf_directory, chunk_size=1000, chunk_overlap=200):
-        self.pdf_dir = pdf_directory
-        self.chunk_size = chunk_size
-        self.chunk_overlap = chunk_overlap
+    def __init__(self, config): 
+        self.pdf_dir = Path(config['paths']['root'], config['paths']['pdf_dir'])
+        self.chunk_size = config['chunking']['chunk_size']
+        self.chunk_overlap = config['chunking']['chunk_overlap']
 
     #Read all the PDFs from the Directory
     def process_all_pdfs(self):

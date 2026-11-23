@@ -1,11 +1,14 @@
 from src.loaders.PDFLoader import PDFLoader
 from src.vectorstore import VectorStore
 from src.embedding import Embedding
+from src.utils.config_loader import load_config 
+
+#Load Parameter Config 
+config = load_config('/Workspace/Users/ashishchauhan3301@gmail.com/RAG/params/parameters.yml')
 
 ###Ingestion Pipeline 
 #Load all PDF Documents
-data_src_path = "/Workspace/Users/ashishchauhan3301@gmail.com/RAG/data/" 
-loader = PDFLoader(data_src_path)
+loader = PDFLoader(config)
 all_pdf_documents = loader.process_all_pdfs()
 chunks = loader.split_documents(all_pdf_documents)
 
